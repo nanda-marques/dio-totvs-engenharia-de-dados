@@ -54,7 +54,7 @@ Estudos introdutórios sobre computação em nuvem e serviços da Amazon Web Ser
 | [Spotify Data Analytics Dashboard](https://github.com/nanda-marques/spotify-data-analytics-dashboard) | Análise de dados do Spotify a partir de um dataset do Kaggle, com processo de ETL e dashboard interativo. | Python, Pandas e Streamlit |
 | [Streaming Platforms ETL](https://github.com/nanda-marques/streaming-platforms-etl) | Pipeline de ETL para limpeza, transformação e análise de dados de plataformas de streaming, com visualizações interativas. | Python, Pandas, Streamlit e Power BI |
 | [AWS Análise](https://github.com/nanda-marques/AWS-analise) | Proposta de redução de custos operacionais para uma empresa do setor farmacêutico, utilizando serviços de armazenamento, computação e banco de dados em nuvem. | AWS (S3, EC2 e RDS) |
-| [Sistema IA Generativa](LINK_DO_REPOSITORIO) | Desenvolvimento de API REST para consulta e atualização de registros de usuários armazenados em arquivos CSV. | Python, Pandas e FastAPI |
+| Sistema IA Generativa | Desenvolvimento de API REST para consulta e atualização de registros de usuários armazenados em arquivos CSV. | Python, Pandas e FastAPI |
 
 ### Desenvolvimento de APIs e Integração de Dados
 
