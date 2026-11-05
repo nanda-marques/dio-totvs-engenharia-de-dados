@@ -1,0 +1,105 @@
+1. Criar e selecionar o banco
+---
+CREATE DATABASE IF NOT EXISTS db_tcgpokemon_cards;
+USE db_tcgpokemon_cards;
+
+---
+2. Criar tabelas base (sem dependências)
+
+Ordem importa por causa das chaves estrangeiras.
+
+Tipos
+CREATE TABLE tbl_types (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL UNIQUE
+);
+Estágios
+CREATE TABLE tbl_stages (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL UNIQUE
+);
+Coleções (connections)
+CREATE TABLE tbl_connections (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL
+);
+
+---
+3. Criar tabela principal (com FKs)
+CREATE TABLE tbl_cards (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    hp INT,
+    name VARCHAR(100) NOT NULL,
+    type_id INT,
+    stage_id INT,
+    info TEXT,
+    attack VARCHAR(100),
+    damage VARCHAR(10),
+    weak VARCHAR(50),
+    resistance VARCHAR(50),
+    retreat INT,
+    cardNumberInCollection INT,
+    connection_id INT,
+
+    FOREIGN KEY (type_id) REFERENCES tbl_types(id),
+    FOREIGN KEY (stage_id) REFERENCES tbl_stages(id),
+    FOREIGN KEY (connection_id) REFERENCES tbl_connections(id)
+);
+
+---
+4. Inserir dados base (obrigatório antes dos cards)
+
+Sem isso, os INSERT de cards quebram por causa das FKs.
+
+Tipos
+
+INSERT INTO tbl_types (name) VALUES
+('Grass'), ('Fire'), ('Water'), ('Lightning'), ('Psychic'),
+('Fighting'), ('Fairy'), ('Normal'), ('Ghost'), ('Dragon'), ('Colorless');
+Estágios
+INSERT INTO tbl_stages (name) VALUES
+('Basic'), ('Stage 1'), ('Stage 2');
+Coleções
+INSERT INTO tbl_connections (name) VALUES
+('Base Set'), ('Jungle'), ('Fossil');
+
+---
+5. Inserir os cards (seus INSERTs)
+
+Agora pode rodar seus INSERT INTO tbl_cards (...) VALUES (...)
+
+(seeds migration.sql) - rodar depois de criar as tabelas e inserir os dados base (tipos, estágios, coleções)
+---
+
+6. Validar dados
+SELECT * FROM tbl_cards;
+SELECT * FROM tbl_types;
+SELECT * FROM tbl_stages;
+SELECT * FROM tbl_connections;
+
+---
+
+7. Criar a VIEW (só depois de tudo acima)
+CREATE OR REPLACE VIEW vw_cards_detailed AS
+SELECT
+    c.id,
+    c.name,
+    c.hp,
+    t.name AS type,
+    s.name AS stage,
+    con.name AS collection,
+    c.info,
+    c.attack,
+    c.damage,
+    c.weak,
+    c.resistance,
+    c.retreat,
+    c.cardNumberInCollection
+FROM tbl_cards c
+JOIN tbl_types t ON c.type_id = t.id
+JOIN tbl_stages s ON c.stage_id = s.id
+JOIN tbl_connections con ON c.connection_id = con.id;
+
+---
+8. Testar a VIEW
+SELECT * FROM vw_cards_detailed;

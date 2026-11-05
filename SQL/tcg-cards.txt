@@ -1,0 +1,29 @@
+[ação]
+create a script to create a table in mySQL
+
+the first table is a table to save a pokemon tcg card
+the second one is to save collections set
+connect the tables with a foreign key
+
+1st: tbl_cards
+- id
+- hp
+- name 
+- type
+- stage
+- info
+- attack
+- damage
+- weak
+- resistence
+- retreat
+- cardNumberInCollection
+
+2nd: tbl_connections
+-  id
+-  collectionsSetName
+- release Date
+- totalCardsInCollection
+
+otimize the size to perfect size
+don't use comments in this script

@@ -1,0 +1,39 @@
+create table livros ( 
+id INT auto_increment PRIMARY KEY, 
+titulo text, 
+autor text, 
+isbn varchar (50), 
+edicao varchar (50), 
+editora varchar(50), 
+anoPublicacao year, 
+qtdePaginas int, 
+genero ENUM ('poesia', 'soneto', 'romance', 'fábula', 'novela', 'cronica', 'conto', 'ensaio', 'biografia', 'chicklit', 'fantasia', 'distopia', 'ficcao cientifica', 'horror', 'fantastica', 'infanto juvenil', 'young adult', 'suspense', 'autoajuda', 'negocios', 'tecnologia', 'hq', 'aventura'), 
+idioma varchar(50), 
+quantidade int, 
+disponivel int );
+
+
+insert INTO livros (titulo, 
+autor, 
+isbn, 
+edicao, 
+editora, 
+anoPublicacao, 
+qtdePaginas, 
+genero, 
+idioma, 
+quantidade, 
+disponivel) VALUES 
+('orgulho e preconceito', 
+'jane austen', 
+'978-8544001820', 
+'luxo', 
+'martin claret', 
+2018, 
+424, 
+'romance', 
+'portugues', 
+2, 
+2);
+
+select * from livros
