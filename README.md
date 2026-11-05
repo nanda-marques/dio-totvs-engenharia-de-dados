@@ -58,7 +58,7 @@ Estudos introdutórios sobre computação em nuvem e serviços da Amazon Web Ser
 
 ### Desenvolvimento de APIs e Integração de Dados
 
-**Sistema IA Generativa** *(em desenvolvimento)* - [Repositório](LINK_DO_REPOSITORIO)
+**Sistema IA Generativa** *(em desenvolvimento)*
 
 Estudo prático envolvendo Python, Pandas e FastAPI para disponibilização de dados por meio de uma API REST.
 
